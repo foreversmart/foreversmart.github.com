@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>my website</title>
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bootstrap -->
+    <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles -->
+    <link href="{{ ASSET_PATH }}/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images
+      <link rel="shortcut icon" href="images/favicon.ico">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+
+    <!-- atom & rss feed -->
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_PATH }}/css/cover_effect.css" />
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_PATH }}/css/component.css" />
+    <script src="{{ ASSET_PATH }}/js/modernizr.custom.js"></script>
+  </head>
+  <script type="text/javascript">
+
+    isLoadingEnd = false;
+    var r = 79;
+    var g = 79;
+    var b = 79;
+    // 104
+    function changeBg() {
+
+      r = (r + 1) % 31415;
+      g = (g + 1) % 31415;
+      b = (b + 1) % 31415;
+      var rr = Math.round(Math.sin(r/100.0) * 24 + 70);
+      var gg = Math.round(Math.sin(g/100.0) * 36 + 80);
+      var bb = Math.round(Math.sin(b/100.0) * 68 + 115);
+      backgroundColor = document.getElementById('background-color');
+      backgroundColor.style.backgroundColor = 'rgb('+ rr + ','+ gg +','+ bb +')';
+      setTimeout(changeBg, 1000);
+    }
+
+    var scrollLen = 0;
+    var nowOpacity = 100;
+    var isFadeAnimation = false;
+    var scrollFunc = function (e) {  
+      e = e || window.event;  
+      if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件  
+        if (isFadeAnimation == false) {
+          scrollLen = scrollLen + e.wheelDelta;
+          if (scrollLen > 6) { //当滑轮向上滚动时  
+              //alert("滑轮向上滚动");
+              // console.log("Up");
+              fadeOut();
+          }  
+          if (scrollLen < -6) { //当滑轮向下滚动时  
+              //alert("滑轮向下滚动");
+              // console.log("down");
+              fadeIn();
+          } 
+        }   
+      } else if (e.detail) {  //Firefox滑轮事件  
+        if (isFadeAnimation == false) {
+          scrollLen = scrollLen + e.wheelDelta;
+          if (scrollLen > 6) { //当滑轮向上滚动时  
+              //alert("滑轮向上滚动");
+              // console.log("Up");
+              fadeOut();
+          }  
+          if (scrollLen < -6) { //当滑轮向下滚动时  
+              //alert("滑轮向下滚动");
+              // console.log("down");
+              fadeIn();
+          } 
+        }
+      }
+    }  
+    //给页面绑定滑轮滚动事件  
+    if (document.addEventListener) {//firefox  
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);  
+    }  
+    //滚动滑轮触发scrollFunc方法  //ie 谷歌  
+    window.onmousewheel = document.onmousewheel = scrollFunc;
+    //document.getElementById('navbar-id').style.display = "none";
+
+    function fadeIn() {
+      isFadeAnimation = true;
+      scrollLen = 0;
+      function tempF(){
+        if (nowOpacity <=0 ){
+          // console.log("finish");
+          isFadeAnimation = false;
+          document.getElementById('navbar-id').style.display = "none";
+          
+        }else{
+          nowOpacity = nowOpacity - 1;
+          setAlphaOpacity('navbar-id', nowOpacity);
+          setTimeout(tempF, 1); 
+        }
+      }
+      tempF();    
+    }
+
+    function fadeOut() {
+      isFadeAnimation = true;
+      scrollLen = 0;
+      document.getElementById('navbar-id').style.display = "block";
+      function tempF(){
+        if (nowOpacity >= 100 ){
+          isFadeAnimation = false;
+        }else{
+          nowOpacity = nowOpacity + 1;
+          setAlphaOpacity('navbar-id', nowOpacity);
+          setTimeout(tempF, 1); 
+        }
+      }
+      tempF();
+    }
+
+    function setAlphaOpacity(elm,value){
+      elm=typeof elm=="string"?document.getElementById(elm):elm;
+      if(document.all){  //IE
+          elm.style.filter='alpha(opacity='+value+')';
+      }else{             //FF
+          elm.style.opacity=value/100;
+      }
+    } 
+  </script>
+
+  <body onload="changeBg()">
+    <div id="background-color">
+    </div>
+    <div class="navbar" id="navbar-id">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="{{ HOME_PATH }}">ForeverSmart</a>
+          <ul class="nav">
+            <li><a  href="/archive.html">Archive</a></li>
+            <li><a  href="/pages.html">Pages</a></li>
+            <li><a  href="/categories.html">Categories</a></li>
+            <li><a  href="/tags.html">Tags</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="ip-container" class="ip-container">
+      <!-- initial header -->
+      <header class="ip-header" id="ip-header">
+        <h1 class="ip-logo">
+          <div id="large-header1" class="large-header">
+              <canvas id="demo-canvas1"></canvas>
+          </div>
+          <!-- <a class="main-title" href="">ForeverSmart</a> -->
+        </h1>
+        <div class="ip-loader">
+          <svg class="ip-inner" width="60px" height="60px" viewBox="0 0 80 80">
+            <path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
+            <path id="ip-loader-circle" class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
+          </svg>
+        </div>
+      </header>
+      <!-- main content -->
+      <div id="large-header" class="large-header">
+          <canvas id="demo-canvas"></canvas>
+      </div>
+      <div class="ip-main">
+        <div class="my-container-narrow">
+          <div class="defualt-content">
+            {{ content }}
+          </div>
+        </div>
+      </div>
+    </div><!-- /container -->
+    
+
+    <footer>
+      <p>© 2014 Name Lastname
+        with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+        and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+      </p>
+    </footer>
+    <div style="position:fixed;height:0px;width:100%;left:0;bottom:5px;z-index:999"><div class="footer-banner" style="width:728px; margin:0px auto"></div></div> 
+
+    <script src="{{ ASSET_PATH }}/js/TweenLite.min.js"></script>
+    <script src="{{ ASSET_PATH }}/js/EasePack.min.js"></script>
+    <script src="{{ ASSET_PATH }}/js/cover-animate.js"></script>
+
+    <script src="{{ ASSET_PATH }}/js/rAF.js"></script>
+    <script src="{{ ASSET_PATH }}/js/stars-fall.js"></script>
+
+    <script src="{{ ASSET_PATH }}/js/classie.js"></script>
+    <script src="{{ ASSET_PATH }}/js/pathLoader.js"></script>
+    <script src="{{ ASSET_PATH }}/js/loadAnimation.js"></script>
+
+  </body>
+</html>
