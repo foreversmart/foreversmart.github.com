@@ -133,7 +133,7 @@ a {
 }
 
 .content {
-	min-height: 800px;
+	min-height: 100px;
 }
 
 #background-color {
