@@ -5,6 +5,7 @@ body{
 	background: rgb(1,5,14);
 	background-image: url(../img/back.jpg);
 	background-repeat:no-repeat;
+	background-attachment:fixed;
 	color: #444;
 	font: 14px 'Poly', georgia, serif;
 	position: absolute;
