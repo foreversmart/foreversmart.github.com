@@ -1,0 +1,19 @@
+---
+layout: page
+title : 凛冬将至,我心永存!
+header : Post Archive
+---
+{% include JB/setup %}
+
+
+<div>这是一个个人的博客</div>
+<div>本博客用于记录生活中的小事，技术中的困惑，思想的变迁</div>
+<div class="index-post-list">
+	<ul>
+	  {% for post in site.posts %}
+	    <li>
+	      <a href="{{ post.url }}">{{ post.title }}</a>
+	    </li>
+	  {% endfor %}
+	</ul>
+</div>
