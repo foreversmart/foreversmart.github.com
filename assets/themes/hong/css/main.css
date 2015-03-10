@@ -99,14 +99,26 @@ a {
 /* content */
 
 .my-container-narrow {
-	width: 70%;
-	padding: 20px;
+	width: 62%;
+	min-width: 800px;
+	padding-right: 80px;
+	padding-left: 80px;
+	padding-top: 0px;
+	padding-bottom: 30px;
 	margin-top:100px;
 	margin-bottom: 50px;
 	background: #fdfdfd;
 
 	border: 1px #dddbdb solid;
 	border-bottom: 1px #f3f3f3 solid;
+
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	border-top-right-radius: 4px;
+	-webkit-border-top-left-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	border-top-left-radius: 4px;
+
 	-webkit-border-bottom-right-radius: 4px;
 	-moz-border-radius-bottomright: 4px;
 	border-bottom-right-radius: 4px;
@@ -119,8 +131,8 @@ a {
 	box-shadow: 10px 10px 100px rgba(54,51,50,0.3);
 
 	z-index: 210;
-	margin-right: auto;
-	margin-left: auto;
+	/*margin-right: auto;*/
+	margin-left: 50px;
 
 	overflow:scroll;
 }
