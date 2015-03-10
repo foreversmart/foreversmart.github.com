@@ -34,9 +34,53 @@
     <link rel="stylesheet" type="text/css" href="{{ ASSET_PATH }}/css/cover_effect.css" />
     <link rel="stylesheet" type="text/css" href="{{ ASSET_PATH }}/css/component.css" />
     <script src="{{ ASSET_PATH }}/js/modernizr.custom.js"></script>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
   </head>
   <script type="text/javascript">
+    $(window).load(function(){
+        $('img').each(function(){   
+            var maxWidth =$(".defualt-content").width()-20;     // 图片最大宽度   
+            var maxHeight =500;     // 图片最大高度   
+            var ratio = 0;      // 缩放比例  
+            var width = $(this).width();    // 图片实际宽度   
+            var height = $(this).height();  // 图片实际高度      
+            if(width > maxWidth){           // 检查图片是否超宽 
+                ratio = maxWidth / width;       // 计算缩放比例       
+                $(this).css("width", maxWidth); // 设定实际显示宽度       
+                height = height * ratio;        // 计算等比例缩放后的高度       
+                $(this).css("height", height);  // 设定等比例缩放后的高度   
+            }       
+            if(height > maxHeight){         // 检查图片是否超高    
+                ratio = maxHeight / height; // 计算缩放比例      
+                $(this).css("height", maxHeight);   // 设定实际显示高度       
+                width = width * ratio;              // 计算等比例缩放后的高度       
+                $(this).css("width", width);        // 设定等比例缩放后的高度   
+            }
 
+        });
+    });
+    $(window).resize(function(){
+        $('img').each(function(){   
+            var maxWidth = $(".defualt-content").width()-20;      // 图片最大宽度   
+            var maxHeight =500;     // 图片最大高度   
+            var ratio = 0;      // 缩放比例  
+            var width = $(this).width();    // 图片实际宽度   
+            var height = $(this).height();  // 图片实际高度      
+            if(width > maxWidth){           // 检查图片是否超宽 
+                ratio = maxWidth / width;       // 计算缩放比例       
+                $(this).css("width", maxWidth); // 设定实际显示宽度       
+                height = height * ratio;        // 计算等比例缩放后的高度       
+                $(this).css("height", height);  // 设定等比例缩放后的高度   
+            }       
+            if(height > maxHeight){         // 检查图片是否超高    
+                ratio = maxHeight / height; // 计算缩放比例      
+                $(this).css("height", maxHeight);   // 设定实际显示高度       
+                width = width * ratio;              // 计算等比例缩放后的高度       
+                $(this).css("width", width);        // 设定等比例缩放后的高度   
+            }
+
+        });
+    });
     isLoadingEnd = false;
     var r = 79;
     var g = 79;
