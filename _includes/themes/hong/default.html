@@ -185,12 +185,25 @@
             {{ content }}
           </div>
         </div>
+
+        <div class="right-slide">
+          <div class="index-post-list">
+            最近文章:
+            <ul>
+              {% for post in site.posts %}
+                <li>
+                  <a href="{{ post.url }}">{{ post.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
       </div>
     </div><!-- /container -->
     
 
     <footer>
-      <p>© 2014 Name Lastname
+      <p>© 2014 Ben
         with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
         and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
       </p>
