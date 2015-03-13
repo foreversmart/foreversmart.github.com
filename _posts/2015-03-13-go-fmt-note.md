@@ -8,7 +8,7 @@ tags: []
 {% include JB/setup %}
 
 作者：ForeverSmart   
-[原文链接:](http://foreversmart.github.io/2015/03/13/go-fmt-note/) http://foreversmart.github.io/2015/03/13/go-fmt-note/
+[原文链接:](http://foreversmart.github.io/go/2015/03/13/go-fmt-note/) http://foreversmart.github.io/go/2015/03/13/go-fmt-note/
 
 ----
 最近系统的学习了GO语言中字符串格式化使用的相关技巧，记录下具体的参数的用法和当中使用要注意的细节
