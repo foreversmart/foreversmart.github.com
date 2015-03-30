@@ -11,6 +11,7 @@ tags: []
 [原文链接:](http://foreversmart.github.io/go/2015/03/30/go-regexp-note/) http://foreversmart.github.io/go/2015/03/30/go-regexp-note/
 
 ----
+
 #### GO语言正则表达式笔记
 
 
@@ -20,11 +21,18 @@ tags: []
      	NFA  NFA性能与DFA相近，相对DFA构造简单，除了不支持少数语法外都较好的支持（不支持搜索时反向引用）  
      	回溯  功能最强适配所有的语法，但是会随着规模增大出现指数级复杂度
      	GO语言中使用RE2正则表达式引擎，该引擎中使用DFA和NFA结合，在提高性能同时也能保证对语法的支持
-        相关链接：
-        [性能和原理](http://swtch.com/~rsc/regexp/regexp1.html)
-        [解释器实现](http://swtch.com/~rsc/regexp/regexp2.html)
-        [实践中的匹配](http://swtch.com/~rsc/regexp/regexp3.html)
-        [Google Code Search工作原理](http://swtch.com/~rsc/regexp/regexp4.html)
+     	
+![image](http://pdos.csail.mit.edu/~rsc/regexp-img/grep3p.png)  
+回溯模型  复杂度  
+![image](http://pdos.csail.mit.edu/~rsc/regexp-img/grep4p.png)  
+NFA模型复杂度
+     	
+  
+###### 相关链接：  
+[性能和原理](http://swtch.com/~rsc/regexp/regexp1.html)  
+[解释器实现](http://swtch.com/~rsc/regexp/regexp2.html)  
+[实践中的匹配](http://swtch.com/~rsc/regexp/regexp3.html)  
+[Google Code Search工作原理](http://swtch.com/~rsc/regexp/regexp4.html)
 
 
 ######2.正则表达式的使用
