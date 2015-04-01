@@ -1,19 +1,28 @@
 ---
 layout: page
-title : 凛冬将至,我心永存!
+title : The one who wants to wear a crown must bear the weight
 header : Post Archive
 ---
 {% include JB/setup %}
 
 
-<div>这是一个个人的博客</div>
-<div>本博客用于记录生活中的小事，技术中的困惑，思想的变迁</div>
-<div class="index-post-list">
-	<ul>
-	  {% for post in site.posts %}
-	    <li>
-	      <a href="{{ post.url }}">{{ post.title }}</a>
-	    </li>
-	  {% endfor %}
-	</ul>
+<div class="post-author">
+	<a href="https://about.me/foreversmart" class="post-author-avatar">
+	  <img src="{{ ASSET_PATH }}hong/img/head.jpg" alt="ForeverSmart">
+	</a>
+	<div class="post-author-info">
+		<a href="https://about.me/foreversmart" class="post-author-name">
+		  ForeverSmart
+		</a>
+		<p class="post-author-bio">Software Engineer construct websites, mobile apps. Gopher, and a go preacher of Geek College. building a distributed craw system and information recommendation system.</p>
+		<p></p>
+		<p>本博客用于记录生活中的小事，技术中的困惑，思想的变迁</p>
+		{% for category in site.categories %} 
+		  <h2 id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</h2>
+		  <ul>
+		    {% assign pages_list = category[1] %}  
+		    {% include JB/pages_list %}
+		  </ul>
+		{% endfor %}
+	</div>
 </div>
